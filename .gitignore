@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Data and vector artifacts
+data/
+*.db
+chroma/
+embedding_cache/
+
+# Misc
+*.log
+.DS_Store
