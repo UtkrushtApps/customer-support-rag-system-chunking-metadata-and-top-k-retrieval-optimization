@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+gunicorn
+chromadb
+sentence-transformers
+torch
+numpy
+requests
+tiktoken
+pandas
