@@ -1,0 +1,21 @@
+services:
+  chromadb:
+    image: chromadb/chroma
+    container_name: chromadb
+    ports:
+      - 8001:8000
+    volumes:
+      - ./chroma:/chroma-data
+  supportapi:
+    build: ./
+    container_name: supportapi
+    depends_on:
+      - chromadb
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/app
+    command: ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "support_service:app", "--bind", ":8000"]
+    environment:
+      CHROMA_HOST: chromadb
+      CHROMA_PORT: 8000
